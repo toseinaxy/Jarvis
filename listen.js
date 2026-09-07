@@ -4,7 +4,8 @@ console.log("Jarvis hört zu...");
 
 const recording = recorder.record({
   sampleRate: 48000,
-  channels: 1
+  channels: 1,
+  audioType: "wav"
 });
 
 recording
