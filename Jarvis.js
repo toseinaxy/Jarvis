@@ -8,4 +8,4 @@ function jarvis(text) {
   say.speak(text);
 }
 
-jarvis("Hallo! Ich bin Jarvis.");
+jarvis("Hallo! Ich bin " + config.name + ".");
