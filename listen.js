@@ -1,18 +1,18 @@
-const recorder = require("node-record-lpcm16");
+const Microphone = require("node-microphone");
 
 console.log("Jarvis hört zu...");
 
-const recording = recorder.record({
-  sampleRate: 48000,
-  channels: 1,
-  audioType: "wav"
+const microphone = new Microphone({
+  rate: 48000,
+  channels: 2
 });
 
-recording
-  .stream()
-  .on("data", (data) => {
-    console.log("Mikrofonsignal erkannt:", data.length, "Bytes");
-  })
-  .on("error", (err) => {
-    console.log("Mikrofon Fehler:", err);
-  });
+const micStream = microphone.startRecording();
+
+micStream.on("data", (data) => {
+  console.log("Audio empfangen:", data.length, "Bytes");
+});
+
+micStream.on("error", (err) => {
+  console.log("Mikrofon Fehler:", err);
+});
